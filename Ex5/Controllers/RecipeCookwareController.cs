@@ -33,7 +33,7 @@ namespace Ex5.Controllers
                 }
                 if (!await _unitOfWork.DishTypes.IsExist(s => s.DishTypeID == dish.DishTypeID))
                 {
-                    return NotFound();
+                    return NotFound("Dish Type Does Not Exist");
                 }
                 await _unitOfWork.Dishes.Create(dish);
                 await _unitOfWork.CommitAsync();
@@ -126,7 +126,6 @@ namespace Ex5.Controllers
         //    return listRecipes;
         //}
 
-
         public async Task<bool> DeleteDishes(int dishTypeID)
         {
             try
@@ -145,7 +144,6 @@ namespace Ex5.Controllers
                 _unitOfWork.Dispose();
                 return false;
             }
-
         }
 
         // DELETE api/<RecipeCookwareController>/5
